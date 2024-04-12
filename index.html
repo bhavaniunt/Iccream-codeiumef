@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Cream Store</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            background: linear-gradient(to bottom, #87CEFA, #00BFFF);
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        /* Add more CSS styles for buttons, cart, etc. */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ice Cream Store</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#" id="cartLink">Cart</a></li>
+            </ul>
+        </nav>
+        <div>
+            <label for="searchInput">Search:</label>
+            <input type="text" id="searchInput" placeholder="Search...">
+            <button>Search</button>
+            <button onclick="showCart()">Cart</button>
+        </div>
+    </header>
+    <main>
+        <section>
+            <h2>Flavors</h2>
+            <div>
+                <h3>Vanilla</h3>
+                <p>Description of Vanilla Ice Cream</p>
+                <p>Price: $5.99</p>
+                <button onclick="addToCart('Vanilla', 5.99)">Add to Cart</button>
+            </div>
+            <div>
+                <h3>Chocolate</h3>
+                <p>Description of Chocolate Ice Cream</p>
+                <p>Price: $6.99</p>
+                <button onclick="addToCart('Chocolate', 6.99)">Add to Cart</button>
+            </div>
+            <div>
+                <h3>Strawberry</h3>
+                <p>Description of Strawberry Ice Cream</p>
+                <p>Price: $7.99</p>
+                <button onclick="addToCart('Strawberry', 7.99)">Add to Cart</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Ice Cream Store</p>
+    </footer>
+    <script>
+        let cart = [];
+        let totalPrice = 0;
+
+        function addToCart(item, price) {
+            cart.push(item);
+            totalPrice += price;
+            alert(item + " added to cart");
+        }
+
+        function showCart() {
+            let cartList = document.createElement('ul');
+            cart.forEach(item => {
+                let cartItem = document.createElement('li');
+                cartItem.textContent = item;
+                cartList.appendChild(cartItem);
+            });
+            alert("Shopping Cart:\n" + cartList.innerHTML + "\nTotal Price: $" + totalPrice);
+        }
+
+        function checkout() {
+            let paymentMethod = prompt("Would you like to use debit or credit card?");
+            alert("Thank you for your purchase using " + paymentMethod + "!");
+        }
+    </script>
+    <button onclick="checkout()">Checkout</button>
+</body>
+</html>
